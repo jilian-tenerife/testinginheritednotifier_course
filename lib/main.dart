@@ -60,35 +60,37 @@ class HomePage extends StatelessWidget {
       ),
       body: SliderInheritedNotifier(
         sliderData: sliderData,
-        child: Column(
-          children: [
-            Slider(
-              value: SliderInheritedNotifier.of(context),
-              onChanged: (value) {
-                sliderData.value = value;
-              },
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Opacity(
-                  opacity: SliderInheritedNotifier.of(context),
-                  child: Container(
-                    color: Colors.yellow,
-                    height: 200,
+        child: Builder(builder: (context) {
+          return Column(
+            children: [
+              Slider(
+                value: SliderInheritedNotifier.of(context),
+                onChanged: (value) {
+                  sliderData.value = value;
+                },
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Opacity(
+                    opacity: SliderInheritedNotifier.of(context),
+                    child: Container(
+                      color: Colors.yellow,
+                      height: 200,
+                    ),
                   ),
-                ),
-                Opacity(
-                  opacity: SliderInheritedNotifier.of(context),
-                  child: Container(
-                    color: Colors.blue,
-                    height: 200,
+                  Opacity(
+                    opacity: SliderInheritedNotifier.of(context),
+                    child: Container(
+                      color: Colors.blue,
+                      height: 200,
+                    ),
                   ),
-                ),
-              ].expandEqually().toList(),
-            )
-          ],
-        ),
+                ].expandEqually().toList(),
+              )
+            ],
+          );
+        }),
       ),
     );
   }
